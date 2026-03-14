@@ -1,0 +1,20 @@
+# Virtual environment
+venv/
+
+# Raw data files — too large for GitHub
+data/*.txt
+data/*.csv
+
+# Trained models — large binary files
+models/*.pkl
+
+# Mac system files
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
