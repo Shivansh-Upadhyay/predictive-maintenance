@@ -18,8 +18,7 @@ from xgboost import XGBRegressor
 
 
 # ── CHUNK 2: Define Features & Target ─────────────────────────────────────
-# We drop columns that are NOT useful for prediction:
-#
+# Dropping columns that are NOT useful for prediction:
 #   engine_id → just an identifier, not a signal
 #   cycle     → raw cycle number (we already have cycle_normalized)
 #   RUL       → this is what we're PREDICTING, not an input
@@ -35,16 +34,14 @@ def get_features_and_target(df):
     X = df[feature_cols]
     y = df['RUL']
 
-    print(f"🎯 Target        : RUL (Remaining Useful Life)")
-    print(f"📦 Features used : {len(feature_cols)}")
-    print(f"📊 Dataset size  : {X.shape[0]} rows")
+    print(f" Target        : RUL (Remaining Useful Life)")
+    print(f" Features used : {len(feature_cols)}")
+    print(f" Dataset size  : {X.shape[0]} rows")
 
     return X, y, feature_cols
 
 
 # ── CHUNK 3: Evaluation Function ──────────────────────────────────────────
-# We measure model quality with 3 metrics:
-#
 #   RMSE → average error in cycles (main metric, lower = better)
 #   MAE  → similar to RMSE but less sensitive to big errors
 #   R²   → how much variance the model explains (1.0 = perfect, 0 = useless)
@@ -78,7 +75,7 @@ def evaluate_model(model, X_test, y_test, model_name):
 
 def train_random_forest(X_train, y_train):
 
-    print("\n🌲 Training Random Forest...")
+    print("\n Training Random Forest...")
     
     rf_model = RandomForestRegressor(
         n_estimators=200,
@@ -103,7 +100,7 @@ def train_random_forest(X_train, y_train):
 
 def train_xgboost(X_train, y_train):
 
-    print("\n⚡ Training XGBoost...")
+    print("\n Training XGBoost...")
     
     xgb_model = XGBRegressor(
         n_estimators=300,
@@ -122,10 +119,6 @@ def train_xgboost(X_train, y_train):
 
 
 # ── CHUNK 6: Feature Importance ───────────────────────────────────────────
-# After training, Random Forest tells us WHICH features mattered most
-# This is gold for interviews:
-# "sensor_11_mean_10 was the top predictor — meaning temperature trend
-#  over 10 cycles is the strongest signal of approaching failure"
 
 def show_feature_importance(model, feature_cols, top_n=10):
 
@@ -157,7 +150,7 @@ if __name__ == "__main__":
 
     # Load featured data for this dataset
     input_file = f"data/train_featured_{dataset}.csv"
-    print(f"📂 Loading {input_file}...")
+    print(f" Loading {input_file}...")
     df = pd.read_csv(input_file)
 
     # Get features and target
@@ -167,8 +160,8 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
     )
-    print(f"\n✂️  Train split : {X_train.shape[0]} rows")
-    print(f"✂️  Test split  : {X_test.shape[0]} rows")
+    print(f"\n  Train split : {X_train.shape[0]} rows")
+    print(f"  Test split  : {X_test.shape[0]} rows")
 
     # Train both models
     print(f"\n{'='*50}")
@@ -198,8 +191,8 @@ if __name__ == "__main__":
         best_model = xgb_model
         best_name  = "XGBoost"
 
-    print(f"\n  🏆 Best Model : {best_name}")
-    print(f"  📉 Best RMSE  : {min(rf_results['RMSE'], xgb_results['RMSE']):.2f} cycles")
+    print(f"\n   Best Model : {best_name}")
+    print(f"   Best RMSE  : {min(rf_results['RMSE'], xgb_results['RMSE']):.2f} cycles")
 
     # Feature importance
     show_feature_importance(rf_model, feature_cols)
@@ -220,8 +213,7 @@ if __name__ == "__main__":
     
     
 # ── CHUNK 8: Save Comparison Results ──────────────────────────────────────
-# We save both models' metrics so app.py can visualize them
-# without retraining every time the app loads
+# Saving both metrices for  app.py
 
 comparison = pd.DataFrame([
     {
