@@ -14,15 +14,7 @@ USEFUL_SENSORS = [
 
 
 # ── CHUNK 2 ───────────────────────────────
-# FD002 has 6 operating conditions defined by 3 settings
-# We use KMeans to automatically group similar conditions together
-# Then normalize sensors WITHIN each cluster
-#
-# WHY? A sensor reading of 520 means something completely different
-# at sea level vs high altitude — clustering fixes this so the model
-# sees clean, comparable values regardless of operating condition
-#
-# This is called "condition-based normalization" in industry
+
 
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
