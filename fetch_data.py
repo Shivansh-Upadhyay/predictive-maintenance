@@ -41,7 +41,7 @@ def add_rul_labels(df):
     df['RUL'] = df['max_cycle'] - df['cycle']
     df.drop(columns=['max_cycle'], inplace=True)
 
-    print(f"\n🎯 RUL Labels Added!")
+    print(f"\n RUL Labels Added!")
     print(f"   Max RUL : {df['RUL'].max()} cycles")
     print(f"   Min RUL : {df['RUL'].min()} cycles")
     print(f"   Avg RUL : {df['RUL'].mean():.1f} cycles")
@@ -84,5 +84,4 @@ if __name__ == "__main__":
 
     output_file = f"data/train_processed_{dataset}.csv"
     train_df.to_csv(output_file, index=False)
-    print(f"\n💾 Saved → {output_file}")
-    print(f"\n✅ Stage 1 Complete for {dataset}!")
+    print(f"\n Saved → {output_file}")
