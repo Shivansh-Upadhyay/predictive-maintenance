@@ -1,8 +1,8 @@
 <div align="center">
 
-# ⚙️ PREDICTMAINT
+# ⚙️ IEMS
 
-### Industrial Equipment Failure Prediction System
+### Industrial Equipment Maintenance System
 
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![XGBoost](https://img.shields.io/badge/XGBoost-2.0-189AB4?style=for-the-badge)](https://xgboost.readthedocs.io)
