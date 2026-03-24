@@ -1,8 +1,3 @@
-touch requirements.txt
-```
-
-Paste this inside:
-```
 pandas
 numpy
 scikit-learn
@@ -10,24 +5,3 @@ xgboost
 streamlit
 plotly
 joblib
-```
-
----
-
-## Replace YOUR USERNAME
-
-In the README find this line:
-```
-git clone https://github.com/Shivansh-Upadhyay/predictive-maintenance.git
-```
-
----
-
-## How It Looks On GitHub 👀
-```
-✅ Badges at top         → looks maintained
-✅ Results table         → numbers upfront
-✅ Architecture diagram  → shows systems thinking
-✅ Copy-paste commands   → easy to run
-✅ RGIPT context         → your unique angle
-✅ Future scope          → shows ambition
