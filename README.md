@@ -108,7 +108,7 @@ raw sensor data (NASA CMAPSS)
 ### 1 — Clone The Repository
 
 ```bash
-git clone https://github.com/YOURUSERNAME/predictive-maintenance.git
+git clone https://github.com/Shivansh-Upadhyay/predictive-maintenance.git
 cd predictive-maintenance
 ```
 
